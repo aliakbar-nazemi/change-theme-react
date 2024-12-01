@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState(false);
+
+  const changeTheme = () => {
+    setTheme((prevState) => !prevState);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section
+      className="w-full min-h-[100vh] p-[10px]"
+      id={!theme ? "light" : "dark"}
+    >
+      <button
+        onClick={changeTheme}
+        className={
+          !theme
+            ? "light-btn bg-slate-300 p-[10px] shadow-2xl rounded-lg"
+            : "dark-btn bg-slate-700 p-[10px] shadow-2xl rounded-lg"
+        }
+      >
+        change theme
+      </button>
+    </section>
   );
 }
 
